@@ -36,19 +36,25 @@
       "group": "Get Started",
       "pages": [
         "introduction",
-        "quickstart",
-        "development"
+        "quickstart"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Agent Essentials",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "docs/essentials/reasoning",
+        "docs/essentials/models",
+        "docs/essentials/channels",
+        "docs/essentials/tools",
+        "docs/essentials/monitoring"
+      ]
+    },
+
+    {
+      "group": "Guides",
+      "pages": [
+        "docs/guides/best-practices",
+        "docs/guides/prompting"
       ]
     },
     {

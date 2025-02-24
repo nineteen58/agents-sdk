@@ -1,86 +1,81 @@
 ---
 title: 'Quickstart'
-description: 'Start building awesome documentation in under 5 minutes'
+description: 'Get your AI phone agent up and running in under 5 minutes'
 ---
 
-## Setup your development
+## Create your first agent
 
-Learn how to update your docs locally and deploy them to the public.
+Learn how to create and deploy your first AI phone agent in just a few steps.
 
-### Edit and preview
+### Initial Setup
+From your dashboard:
+1. Click "Create New Agent"
+2. Give your agent a name
+3. Give your agent some initial instructions
+4. Click "Create Agent"
 
-<AccordionGroup>
-  <Accordion icon="GitHub" title="Clone your docs locally">
-    During the onboarding process, we created a repository on your Github with
-    your docs content. You can find this repository on our
-    [dashboard](https://dashboard.mintlify.com). To clone the repository
-    locally, follow these
-    [instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-    in your terminal.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Preview changes">
-    Previewing helps you make sure your changes look as intended. We built a
-    command line interface to render these changes locally. 1. Install the
-    [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the
-    documentation changes locally with this command: ``` npm i -g mintlify ```
-    2. Run the following command at the root of your documentation (where
-    `mint.json` is): ``` mintlify dev ```
-  </Accordion>
-</AccordionGroup>
 
-### Deploy your changes
+### Configure Your Agent
 
-<AccordionGroup>
+#### Set up agent behavior
+Configure how your agent thinks and responds:
+1. Define your agent's personality and tone
+2. Add your business's key information
+3. Set up specific instructions for handling common scenarios
+4. Configure business hours and availability
 
-<Accordion icon="message-bot" title="Install our Github app">
-  Our Github app automatically deploys your changes to your docs site, so you
-  don't need to manage deployments yourself. You can find the link to install on
-  your [dashboard](https://dashboard.mintlify.com). Once the bot has been
-  successfully installed, there should be a check mark next to the commit hash
-  of the repo.
-</Accordion>
-<Accordion icon="rocket" title="Push your changes">
-  [Commit and push your changes to
-  Git](https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository#about-git-push)
-  for your changes to update in your docs site. If you push and don't see that
-  the Github app successfully deployed your changes, you can also manually
-  update your docs through our [dashboard](https://dashboard.mintlify.com).
-</Accordion>
+#### Connect a phone number
+Get your agent ready to take calls:
+1. We'll provide you with a testing number to start
+2. You can also connect your own phone number to your agent
 
-</AccordionGroup>
+### Test and Go Live
 
-## Update your docs
+#### Test your agent
+Before going live:
+1. Call your number and try out different conversation scenarios
+2. Review call recordings and transcripts
+3. Adjust agent settings as needed
 
-Add content directly in your files with MDX syntax and React components. You can use any of our components, or even build your own.
+#### Launch your agent
+Ready to go live?
+1. Review and finalize your agent's configuration
+2. Set up a production phone number
+3. Monitor your first few calls
+4. Configure any needed adjustments
+
+## Next Steps
 
 <CardGroup>
+  <Card
+    title="Advanced Configuration"
+    icon="sliders"
+    href="/configuration/advanced"
+  >
+    Fine-tune your agent's responses and behavior patterns.
+  </Card>
 
-<Card title="Style Your Docs" icon="paintbrush" href="/settings/global">
-  Add flair to your docs with personalized branding.
-</Card>
+  <Card
+    title="Best Practices"
+    icon="star"
+    href="/guides/best-practices"
+  >
+    Learn how to optimize your agent's performance.
+  </Card>
 
-<Card
-  title="Add API Endpoints"
-  icon="square-code"
-  href="/api-playground/configuration"
->
-  Implement your OpenAPI spec and enable API user interaction.
-</Card>
+  <Card
+    title="Call Analytics"
+    icon="chart-mixed"
+    href="/analytics/overview"
+  >
+    Monitor your agent's performance and call metrics.
+  </Card>
 
-<Card
-  title="Integrate Analytics"
-  icon="chart-mixed"
-  href="/analytics/supported-integrations"
->
-  Draw insights from user interactions with your documentation.
-</Card>
-
-<Card
-  title="Host on a Custom Domain"
-  icon="browser"
-  href="/settings/custom-domain/subdomain"
->
-  Keep your docs on your own website's subdomain.
-</Card>
-
+  <Card
+    title="Human Handoff"
+    icon="people"
+    href="/features/human-handoff"
+  >
+    Set up seamless transfers to human agents when needed.
+  </Card>
 </CardGroup>
