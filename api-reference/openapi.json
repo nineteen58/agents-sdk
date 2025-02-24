@@ -825,7 +825,7 @@
         }
       }
     },
-    "/api/conversations": {
+    "/public-api/conversations": {
       "get": {
         "tags": [
           "Conversations"
@@ -951,7 +951,7 @@
         }
       }
     },
-    "/api/phonecalls": {
+    "/public-api/phone-calls": {
       "post": {
         "tags": [
           "Voice Calls"
