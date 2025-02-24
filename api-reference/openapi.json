@@ -101,6 +101,62 @@
             "type": "string"
           }
         }
+      },
+      "Broadcast": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "agent_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "test": {
+            "type": "boolean"
+          }
+        }
+      },
+      "BroadcastMessage": {
+        "type": "object",
+        "properties": {
+          "contact_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "broadcast_text": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "transcript": {
+            "type": "object"
+          },
+          "answered": {
+            "type": "boolean"
+          },
+          "delivered": {
+            "type": "boolean"
+          },
+          "successful": {
+            "type": "boolean"
+          },
+          "successful_evaluation": {
+            "type": "string"
+          }
+        }
       }
     }
   },
@@ -1661,6 +1717,235 @@
           },
           "401": {
             "description": "Unauthorized - Invalid or missing API key"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/public-api/broadcasts": {
+      "get": {
+        "tags": [
+          "Broadcasts"
+        ],
+        "summary": "Retrieve a paginated list of broadcasts",
+        "description": "Returns a paginated list of broadcasts",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "agent_id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "Filter broadcasts by agent ID"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            },
+            "description": "Page number for pagination"
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            },
+            "description": "Number of items per page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved broadcasts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "broadcasts": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Broadcast"
+                      }
+                    },
+                    "totalCount": {
+                      "type": "integer"
+                    },
+                    "currentPage": {
+                      "type": "integer"
+                    },
+                    "pageSize": {
+                      "type": "integer"
+                    },
+                    "totalPages": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing API key"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Broadcasts"
+        ],
+        "summary": "Create a new broadcast",
+        "description": "Creates a new broadcast campaign",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "agent_id",
+                  "channel",
+                  "prompt_id",
+                  "contact_ids"
+                ],
+                "properties": {
+                  "agent_id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "channel": {
+                    "type": "string",
+                    "enum": ["phone", "advanced-voice"]
+                  },
+                  "prompt_id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "first_sentence": {
+                    "type": "string"
+                  },
+                  "contact_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "uuid"
+                    }
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "test": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Broadcast created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "broadcast": {
+                      "$ref": "#/components/schemas/Broadcast"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing API key"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/public-api/broadcasts/{id}": {
+      "get": {
+        "tags": [
+          "Broadcasts"
+        ],
+        "summary": "Retrieve a single broadcast and its messages",
+        "description": "Returns details of a specific broadcast and its associated messages",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "Broadcast ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved broadcast details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "broadcast": {
+                      "$ref": "#/components/schemas/Broadcast"
+                    },
+                    "messages": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/BroadcastMessage"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing API key"
+          },
+          "404": {
+            "description": "Broadcast not found"
           },
           "500": {
             "description": "Internal server error"

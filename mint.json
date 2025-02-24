@@ -70,6 +70,14 @@
       ]
     },
     {
+      "group": "Broadcasts",
+      "pages": [
+        "api-reference/endpoints/broadcasts/get-all-broadcasts",
+        "api-reference/endpoints/broadcasts/get-broadcast",
+        "api-reference/endpoints/broadcasts/create-broadcast"
+      ]
+    },
+    {
       "group": "Contacts",
       "pages": [
         "api-reference/endpoints/contacts/get-all-contacts",
