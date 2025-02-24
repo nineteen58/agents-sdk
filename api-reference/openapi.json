@@ -6,8 +6,8 @@
   },
   "servers": [
     {
-      "url": "https://agents.nineteen58.co.za/",
-      "description": "Production"
+      "url": "https://agents.nineteen58.co.za",
+      "description": "Production server"
     }
   ],
   "components": {
@@ -49,6 +49,56 @@
           "relevant_information": {
             "type": "string",
             "nullable": true
+          }
+        }
+      },
+      "Prompt": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string"
+          },
+          "prompt": {
+            "type": "string"
+          },
+          "agent_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "is_global": {
+            "type": "boolean"
+          },
+          "goal": {
+            "type": "string"
+          },
+          "flow": {
+            "type": "string"
+          },
+          "tool_use_rules": {
+            "type": "string"
+          },
+          "background": {
+            "type": "string"
+          },
+          "persona": {
+            "type": "string"
+          },
+          "outcomes_json": {
+            "type": "object"
+          },
+          "example_conversation": {
+            "type": "string"
+          },
+          "outcomes": {
+            "type": "string"
           }
         }
       }
@@ -740,18 +790,6 @@
             "ApiKeyAuth": []
           }
         ],
-        "parameters": [
-          {
-            "in": "query",
-            "name": "page",
-            "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "default": 1
-            },
-            "description": "Page number for pagination"
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -993,29 +1031,6 @@
             "ApiKeyAuth": []
           }
         ],
-        "parameters": [
-          {
-            "in": "query",
-            "name": "page",
-            "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "default": 1
-            },
-            "description": "Page number for pagination"
-          },
-          {
-            "in": "query",
-            "name": "pageSize",
-            "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "maximum": 100,
-              "default": 10
-            },
-            "description": "Number of items per page"
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -1122,6 +1137,527 @@
           },
           "400": {
             "description": "Invalid request payload"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing API key"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/public-api/prompts/{promptId}": {
+      "get": {
+        "tags": [
+          "Prompts"
+        ],
+        "summary": "Get a prompt by ID",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "promptId",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "Prompt ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Prompt found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "prompt": {
+                      "$ref": "#/components/schemas/Prompt"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Prompt not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Prompts"
+        ],
+        "summary": "Update a prompt (full update)",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "promptId",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "prompt"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "prompt": {
+                    "type": "string"
+                  },
+                  "agent_id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "is_global": {
+                    "type": "boolean"
+                  },
+                  "goal": {
+                    "type": "string"
+                  },
+                  "flow": {
+                    "type": "string"
+                  },
+                  "tool_use_rules": {
+                    "type": "string"
+                  },
+                  "background": {
+                    "type": "string"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "outcomes_json": {
+                    "type": "object"
+                  },
+                  "example_conversation": {
+                    "type": "string"
+                  },
+                  "outcomes": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Prompt updated successfully"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "404": {
+            "description": "Prompt not found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Prompts"
+        ],
+        "summary": "Partially update a prompt",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "promptId",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "prompt": {
+                    "type": "string"
+                  },
+                  "agent_id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "is_global": {
+                    "type": "boolean"
+                  },
+                  "goal": {
+                    "type": "string"
+                  },
+                  "flow": {
+                    "type": "string"
+                  },
+                  "tool_use_rules": {
+                    "type": "string"
+                  },
+                  "background": {
+                    "type": "string"
+                  },
+                  "persona": {
+                    "type": "string"
+                  },
+                  "outcomes_json": {
+                    "type": "object"
+                  },
+                  "example_conversation": {
+                    "type": "string"
+                  },
+                  "outcomes": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Prompt updated successfully"
+          },
+          "404": {
+            "description": "Prompt not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Prompts"
+        ],
+        "summary": "Delete a prompt",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "promptId",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Prompt deleted successfully"
+          },
+          "404": {
+            "description": "Prompt not found"
+          }
+        }
+      }
+    },
+    "/public-api/prompts": {
+      "get": {
+        "tags": [
+          "Prompts"
+        ],
+        "summary": "Retrieve a paginated list of broadcast prompts",
+        "description": "Returns a paginated list of broadcast prompts",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "agent_id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "Filter prompts by agent ID"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            },
+            "description": "Page number for pagination"
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            },
+            "description": "Number of items per page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved prompts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "prompts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "prompt": {
+                            "type": "string"
+                          },
+                          "agent_id": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "is_global": {
+                            "type": "boolean"
+                          },
+                          "goal": {
+                            "type": "string"
+                          },
+                          "flow": {
+                            "type": "string"
+                          },
+                          "tool_use_rules": {
+                            "type": "string"
+                          },
+                          "background": {
+                            "type": "string"
+                          },
+                          "persona": {
+                            "type": "string"
+                          },
+                          "outcomes_json": {
+                            "type": "object"
+                          },
+                          "example_conversation": {
+                            "type": "string"
+                          },
+                          "outcomes": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "totalCount": {
+                      "type": "integer"
+                    },
+                    "currentPage": {
+                      "type": "integer"
+                    },
+                    "pageSize": {
+                      "type": "integer"
+                    },
+                    "totalPages": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing API key"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Prompts"
+        ],
+        "summary": "Create a new broadcast prompt",
+        "description": "Creates a new broadcast prompt with the provided details",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "prompt"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the prompt"
+                  },
+                  "prompt": {
+                    "type": "string",
+                    "description": "The prompt content"
+                  },
+                  "agent_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Associated agent ID"
+                  },
+                  "is_global": {
+                    "type": "boolean",
+                    "description": "Whether the prompt is global"
+                  },
+                  "goal": {
+                    "type": "string",
+                    "description": "Goal of the prompt"
+                  },
+                  "flow": {
+                    "type": "string",
+                    "description": "Flow description"
+                  },
+                  "tool_use_rules": {
+                    "type": "string",
+                    "description": "Rules for tool usage"
+                  },
+                  "background": {
+                    "type": "string",
+                    "description": "Background information"
+                  },
+                  "persona": {
+                    "type": "string",
+                    "description": "Persona description"
+                  },
+                  "outcomes_json": {
+                    "type": "object",
+                    "description": "JSON structured outcomes"
+                  },
+                  "example_conversation": {
+                    "type": "string",
+                    "description": "Example conversation"
+                  },
+                  "outcomes": {
+                    "type": "string",
+                    "description": "Expected outcomes"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Prompt created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "prompt": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "prompt": {
+                          "type": "string"
+                        },
+                        "agent_id": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "is_global": {
+                          "type": "boolean"
+                        },
+                        "goal": {
+                          "type": "string"
+                        },
+                        "flow": {
+                          "type": "string"
+                        },
+                        "tool_use_rules": {
+                          "type": "string"
+                        },
+                        "background": {
+                          "type": "string"
+                        },
+                        "persona": {
+                          "type": "string"
+                        },
+                        "outcomes_json": {
+                          "type": "object"
+                        },
+                        "example_conversation": {
+                          "type": "string"
+                        },
+                        "outcomes": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid input"
           },
           "401": {
             "description": "Unauthorized - Invalid or missing API key"

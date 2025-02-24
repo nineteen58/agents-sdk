@@ -64,27 +64,38 @@
       ]
     },
     {
+      "group": "Agents",
+      "pages": [
+        "api-reference/endpoints/agents/get-all-agents"
+      ]
+    },
+    {
       "group": "Contacts",
       "pages": [
-        "api-reference/endpoint/get-all-contacts",
-        "api-reference/endpoint/get-single-contact",
-        "api-reference/endpoint/create-contact",
-        "api-reference/endpoint/update-contact",
-        "api-reference/endpoint/partial-update-contact",
-        "api-reference/endpoint/delete-contact",
-        "api-reference/endpoint/enrich-contact"
+        "api-reference/endpoints/contacts/get-all-contacts",
+        "api-reference/endpoints/contacts/get-single-contact",
+        "api-reference/endpoints/contacts/create-contact",
+        "api-reference/endpoints/contacts/update-contact",
+        "api-reference/endpoints/contacts/partial-update-contact",
+        "api-reference/endpoints/contacts/delete-contact",
+        "api-reference/endpoints/contacts/enrich-contact"
       ]
     },
     {
       "group": "Conversations",
       "pages": [
-        "api-reference/endpoint/list-conversations"
+        "api-reference/endpoints/conversations/list-conversations"
       ]
     },
     {
-      "group": "Agents",
+      "group": "Prompts",
       "pages": [
-        "api-reference/endpoint/get-all-agents"
+        "api-reference/endpoints/prompts/get-all-prompts",
+        "api-reference/endpoints/prompts/get-single-prompt",
+        "api-reference/endpoints/prompts/create-prompt",
+        "api-reference/endpoints/prompts/update-prompt",
+        "api-reference/endpoints/prompts/partial-update-prompt",
+        "api-reference/endpoints/prompts/delete-prompt"
       ]
     }
   ],
