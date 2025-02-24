@@ -1,20 +1,19 @@
 ---
 title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+description: 'API Reference for AI Agents and Contact Management'
 ---
 
 <Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
+  This section provides API reference documentation for managing contacts and conversations within the AI Agents platform.
 </Note>
 
-## Welcome
+## Welcome to the API Reference
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+This API allows you to manage contacts and retrieve conversation data for your AI agents. It uses the OpenAPI specification for defining the API endpoints and request/response structures.
 
 <Card
-  title="Plant Store Endpoints"
-  icon="leaf"
+  title="API Specification"
+  icon="file-code"
   href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
 >
   View the OpenAPI specification file
@@ -22,7 +21,7 @@ There are two ways to build API documentation: [OpenAPI](https://mintlify.com/do
 
 ## Authentication
 
-All API endpoints are authenticated using API keys. Header `x-api-key` is required for all requests.
+All API endpoints are authenticated using API keys. The `x-api-key` header is required for all requests.
 
 ```json
 "security": [
@@ -31,3 +30,16 @@ All API endpoints are authenticated using API keys. Header `x-api-key` is requir
   }
 ]
 ```
+
+## Key Features
+
+*   **Contact Management:** Create, retrieve, update, and delete contacts. Enrich contact data with additional information.
+*   **Conversation Retrieval:** Retrieve paginated lists of conversations, filterable by contact ID or agent ID.
+
+## Base URL
+
+The base URL for all API endpoints is `/public-api`.
+
+## Getting Started
+
+Explore the endpoints below to start building your integration with the AI Agents platform.
