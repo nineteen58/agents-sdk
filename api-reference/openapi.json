@@ -950,6 +950,134 @@
           }
         }
       }
+    },
+    "/api/phonecalls": {
+      "post": {
+        "tags": [
+          "Voice Calls"
+        ],
+        "summary": "Trigger voice calls to multiple contacts",
+        "description": "Initiates voice calls to specified contacts using the provided broadcast configurations",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "broadcasts",
+                  "orgId"
+                ],
+                "properties": {
+                  "broadcasts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "contact",
+                        "objective",
+                        "name",
+                        "agent",
+                        "firstSentence",
+                        "assistantId",
+                        "phoneNumberId"
+                      ],
+                      "properties": {
+                        "contact": {
+                          "type": "string"
+                        },
+                        "objective": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "voice": {
+                          "type": "string",
+                          "default": "PeYv6zq1awx55FlCLn1O"
+                        },
+                        "language": {
+                          "type": "string",
+                          "default": "en"
+                        },
+                        "backgroundTrack": {
+                          "type": "string",
+                          "default": "office"
+                        },
+                        "startTime": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "agent": {
+                          "type": "string"
+                        },
+                        "firstSentence": {
+                          "type": "string"
+                        },
+                        "firstMessageMode": {
+                          "type": "string",
+                          "default": "assistant-speaks-first"
+                        },
+                        "hipaaEnabled": {
+                          "type": "boolean",
+                          "default": false
+                        },
+                        "assistantId": {
+                          "type": "string"
+                        },
+                        "phoneNumberId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "orgId": {
+                    "type": "string"
+                  },
+                  "testBroadcast": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Voice calls triggered successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "result": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request payload"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing authentication token"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
     }
   },
   "tags": []

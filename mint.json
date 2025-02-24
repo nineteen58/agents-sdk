@@ -66,19 +66,25 @@
     {
       "group": "Contacts",
       "pages": [
-        "api-reference/endpoint/getAll",
-        "api-reference/endpoint/getSingle",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/update",
-        "api-reference/endpoint/patch",
-        "api-reference/endpoint/delete",
-        "api-reference/endpoint/enrich"
+        "api-reference/endpoint/get-all-contacts",
+        "api-reference/endpoint/get-single-contact",
+        "api-reference/endpoint/create-contact",
+        "api-reference/endpoint/update-contact",
+        "api-reference/endpoint/patch-contact",
+        "api-reference/endpoint/delete-contact",
+        "api-reference/endpoint/enrich-contact"
       ]
     },
     {
       "group": "Conversations",
       "pages": [
-        "api-reference/endpoint/listConversations"
+        "api-reference/endpoint/list-conversations"
+      ]
+    },
+    {
+      "group": "Phone Calls",
+      "pages": [
+        "api-reference/endpoint/make-phone-call"
       ]
     }
   ],
