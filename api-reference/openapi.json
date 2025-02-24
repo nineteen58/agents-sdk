@@ -970,8 +970,7 @@
               "schema": {
                 "type": "object",
                 "required": [
-                  "broadcasts",
-                  "orgId"
+                  "broadcasts"
                 ],
                 "properties": {
                   "broadcasts": {
@@ -1035,9 +1034,6 @@
                         }
                       }
                     }
-                  },
-                  "orgId": {
-                    "type": "string"
                   },
                   "testBroadcast": {
                     "type": "boolean",
