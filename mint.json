@@ -70,7 +70,7 @@
         "api-reference/endpoint/get-single-contact",
         "api-reference/endpoint/create-contact",
         "api-reference/endpoint/update-contact",
-        "api-reference/endpoint/patch-contact",
+        "api-reference/endpoint/partial-update-contact",
         "api-reference/endpoint/delete-contact",
         "api-reference/endpoint/enrich-contact"
       ]
