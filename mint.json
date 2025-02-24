@@ -75,11 +75,21 @@
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Contacts",
       "pages": [
-        "api-reference/endpoint/get",
+        "api-reference/endpoint/getAll",
+        "api-reference/endpoint/getSingle",
         "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/endpoint/update",
+        "api-reference/endpoint/patch",
+        "api-reference/endpoint/delete",
+        "api-reference/endpoint/enrich"
+      ]
+    },
+    {
+      "group": "Conversations",
+      "pages": [
+        "api-reference/endpoint/listConversations"
       ]
     }
   ],
