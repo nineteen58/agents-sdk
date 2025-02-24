@@ -17,6 +17,41 @@
         "in": "header",
         "name": "x-api-key"
       }
+    },
+    "schemas": {
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "identifier": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "channel": {
+            "type": "string"
+          },
+          "personal_context": {
+            "type": "string",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "relevant_information": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      }
     }
   },
   "security": [
@@ -34,19 +69,10 @@
         "description": "Returns a paginated list of agents with their associated channels",
         "security": [
           {
-            "apiKeyAuth": []
+            "ApiKeyAuth": []
           }
         ],
         "parameters": [
-          {
-            "in": "header",
-            "name": "x-api-key",
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "description": "API key for authentication"
-          },
           {
             "in": "query",
             "name": "page",
@@ -281,19 +307,10 @@
         ],
         "security": [
           {
-            "apiKeyAuth": []
+            "ApiKeyAuth": []
           }
         ],
         "parameters": [
-          {
-            "in": "header",
-            "name": "x-api-key",
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "description": "API key for authentication"
-          },
           {
             "in": "path",
             "name": "id",
@@ -364,19 +381,10 @@
         ],
         "security": [
           {
-            "apiKeyAuth": []
+            "ApiKeyAuth": []
           }
         ],
         "parameters": [
-          {
-            "in": "header",
-            "name": "x-api-key",
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "description": "API key for authentication"
-          },
           {
             "in": "path",
             "name": "id",
@@ -462,19 +470,10 @@
         ],
         "security": [
           {
-            "apiKeyAuth": []
+            "ApiKeyAuth": []
           }
         ],
         "parameters": [
-          {
-            "in": "header",
-            "name": "x-api-key",
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "description": "API key for authentication"
-          },
           {
             "in": "path",
             "name": "id",
@@ -520,19 +519,10 @@
         ],
         "security": [
           {
-            "apiKeyAuth": []
+            "ApiKeyAuth": []
           }
         ],
         "parameters": [
-          {
-            "in": "header",
-            "name": "x-api-key",
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "description": "API key for authentication"
-          },
           {
             "in": "path",
             "name": "id",
@@ -619,19 +609,10 @@
         "description": "Returns a paginated list of contacts with optional filtering capabilities",
         "security": [
           {
-            "apiKeyAuth": []
+            "ApiKeyAuth": []
           }
         ],
         "parameters": [
-          {
-            "in": "header",
-            "name": "x-api-key",
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "description": "API key for authentication"
-          },
           {
             "in": "query",
             "name": "page",
@@ -756,18 +737,19 @@
         "description": "Creates a new contact with the provided information. Special validation is applied for WhatsApp contacts.",
         "security": [
           {
-            "apiKeyAuth": []
+            "ApiKeyAuth": []
           }
         ],
         "parameters": [
           {
-            "in": "header",
-            "name": "x-api-key",
+            "in": "query",
+            "name": "page",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
             },
-            "required": true,
-            "description": "API key for authentication"
+            "description": "Page number for pagination"
           }
         ],
         "requestBody": {
@@ -882,19 +864,10 @@
         "description": "Returns a paginated list of conversations with optional filtering capabilities",
         "security": [
           {
-            "apiKeyAuth": []
+            "ApiKeyAuth": []
           }
         ],
         "parameters": [
-          {
-            "in": "header",
-            "name": "x-api-key",
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "description": "API key for authentication"
-          },
           {
             "in": "query",
             "name": "page",
@@ -1017,18 +990,30 @@
         "description": "Initiates voice calls to specified contacts using the provided broadcast configurations",
         "security": [
           {
-            "apiKeyAuth": []
+            "ApiKeyAuth": []
           }
         ],
         "parameters": [
           {
-            "in": "header",
-            "name": "x-api-key",
+            "in": "query",
+            "name": "page",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
             },
-            "required": true,
-            "description": "API key for authentication"
+            "description": "Page number for pagination"
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            },
+            "description": "Number of items per page"
           }
         ],
         "requestBody": {
