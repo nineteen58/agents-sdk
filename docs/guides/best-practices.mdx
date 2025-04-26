@@ -1,0 +1,86 @@
+# Best Practices for Building Effective Agents
+
+This guide outlines key principles and patterns for building successful AI agents, based on [Anthropic's research and experience](https://www.anthropic.com/research/building-effective-agents) working with teams across industries.
+
+## Core Principles
+
+1. **Start Simple**
+   - Begin with the simplest possible solution
+   - Only increase complexity when demonstrably needed
+   - Optimize single LLM calls with retrieval and in-context examples first
+
+2. **Choose the Right Architecture**
+   - **Workflows**: Use for predefined, well-structured tasks
+   - **Agents**: Use when flexibility and model-driven decision-making are needed
+   - Consider the tradeoffs between latency, cost, and task performance
+
+3. **Framework Considerations**
+   - Start by using LLM APIs directly when possible
+   - Only add frameworks when they provide clear benefits
+   - Ensure you understand the underlying code of any framework used
+
+## Common Patterns
+
+### 1. Augmented LLM (Basic Building Block)
+- Enhance LLMs with capabilities like:
+  - Retrieval
+  - Tools
+  - Memory
+- Focus on tailoring capabilities to specific use cases
+- Ensure clear documentation for LLM interfaces
+
+### 2. Workflow Patterns
+
+#### Prompt Chaining
+- Breaks tasks into sequential steps
+- Best for tasks with clear, fixed subtasks
+- Example: Generate content → Review → Translate
+
+#### Routing
+- Classifies inputs and directs to specialized handlers
+- Useful for distinct categories requiring different approaches
+- Example: Customer service query classification
+
+#### Parallelization
+- **Sectioning**: Breaking tasks into parallel subtasks
+- **Voting**: Running multiple attempts for higher confidence
+- Useful for speed optimization and quality assurance
+
+#### Orchestrator-Workers
+- Central LLM coordinates subtasks
+- Dynamic task breakdown and delegation
+- Best for complex, unpredictable workflows
+
+#### Evaluator-Optimizer
+- Iterative refinement through feedback loops
+- Use when clear evaluation criteria exist
+- Example: Complex content generation with quality checks
+
+### 3. Autonomous Agents
+- Use for open-ended problems
+- Requires well-designed toolsets
+- Include appropriate guardrails and stopping conditions
+
+## Tool Engineering Best Practices
+
+1. **Design Clear Interfaces**
+   - Write detailed documentation
+   - Include example usage
+   - Specify edge cases
+   - Define clear boundaries between tools
+
+2. **Format Considerations**
+   - Allow sufficient tokens for model reasoning
+   - Use formats familiar from internet text
+   - Avoid complex formatting requirements
+   - Minimize overhead like line counting or string escaping
+
+3. **Testing and Iteration**
+   - Test extensively with example inputs
+   - Iterate based on model usage patterns
+   - Design to prevent common mistakes
+   - Use absolute paths over relative when possible
+
+## Further Reading
+
+For more detailed information and examples, refer to the complete [Anthropic research article on building effective agents](https://www.anthropic.com/research/building-effective-agents).

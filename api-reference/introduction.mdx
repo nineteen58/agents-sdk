@@ -1,0 +1,84 @@
+---
+title: 'Introduction'
+description: 'API Reference for AI Agents Platform'
+---
+
+<Note>
+  This documentation provides comprehensive API reference for managing AI agents, contacts, conversations, prompts, and broadcasts.
+</Note>
+
+## Overview
+
+The AI Agents Platform API enables you to:
+- Manage contacts and their information
+- Retrieve conversation history
+- Create and manage broadcast campaigns
+- Configure AI agent prompts
+- Initiate voice calls and messages
+
+## Authentication
+
+All API endpoints require authentication using API keys. Include your API key in the `x-api-key` header with every request:
+
+```bash
+curl -H "x-api-key: YOUR_API_KEY" https://agents.nineteen58.co.za/public-api/contacts
+```
+
+<Note>
+  Keep your API key secure and never expose it in client-side code or public repositories.
+</Note>
+
+## Base URL
+
+All API requests should be made to:
+
+```
+https://agents.nineteen58.co.za
+```
+
+## Available Resources
+
+The API provides access to the following main resources:
+
+### Contacts
+- Create and manage contact information
+- Update contact details
+- Enrich contact data with additional information
+- Retrieve contact lists with filtering options
+
+### Conversations
+- Retrieve conversation history
+- Filter conversations by contact or agent
+
+### Broadcasts
+- Create broadcast campaigns
+- Manage broadcast messages
+- Track broadcast status and results
+
+### Prompts
+- Create and manage AI agent prompts
+- Configure conversation flows
+- Set agent personas and behaviors
+
+### Voice Calls
+- Initiate voice calls to contacts
+- Configure call parameters and objectives
+
+## Pagination
+
+List endpoints support pagination with the following query parameters:
+- `page`: Page number (default: 1)
+- `pageSize`: Number of items per page (default: 10, max: 100)
+
+## Error Handling
+
+The API uses standard HTTP response codes:
+- `200/201`: Success
+- `400`: Bad request
+- `401`: Unauthorized
+- `404`: Resource not found
+- `500`: Server error
+
+## Getting Started
+
+Explore the endpoints in the following sections to start building your integration with the AI Agents platform.

@@ -1,0 +1,115 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Nineteen58 Agents",
+  "logo": {
+    "dark": "/logo/dark.png",
+    "light": "/logo/light.png"
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#000000",
+    "light": "#FFFFFF",
+    "dark": "#000000",
+    "anchors": {
+      "from": "#0D9373",
+      "to": "#07C983"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:support@nineteen58.co.za"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Dashboard",
+    "url": "https://agents.nineteen58.co.za/login"
+  },
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "api-reference"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "introduction",
+        "quickstart"
+      ]
+    },
+    {
+      "group": "Agent Essentials",
+      "pages": [
+        "docs/essentials/reasoning",
+        "docs/essentials/models",
+        "docs/essentials/channels",
+        "docs/essentials/tools",
+        "docs/essentials/monitoring"
+      ]
+    },
+
+    {
+      "group": "Guides",
+      "pages": [
+        "docs/guides/best-practices",
+        "docs/guides/prompting"
+      ]
+    },
+    {
+      "group": "API Documentation",
+      "pages": [
+        "api-reference/introduction"
+      ]
+    },
+    {
+      "group": "Agents",
+      "pages": [
+        "api-reference/endpoints/agents/get-all-agents"
+      ]
+    },
+    {
+      "group": "Broadcasts",
+      "pages": [
+        "api-reference/endpoints/broadcasts/get-all-broadcasts",
+        "api-reference/endpoints/broadcasts/get-broadcast",
+        "api-reference/endpoints/broadcasts/create-broadcast"
+      ]
+    },
+    {
+      "group": "Contacts",
+      "pages": [
+        "api-reference/endpoints/contacts/get-all-contacts",
+        "api-reference/endpoints/contacts/get-single-contact",
+        "api-reference/endpoints/contacts/create-contact",
+        "api-reference/endpoints/contacts/update-contact",
+        "api-reference/endpoints/contacts/partial-update-contact",
+        "api-reference/endpoints/contacts/delete-contact",
+        "api-reference/endpoints/contacts/enrich-contact"
+      ]
+    },
+    {
+      "group": "Conversations",
+      "pages": [
+        "api-reference/endpoints/conversations/list-conversations"
+      ]
+    },
+    {
+      "group": "Prompts",
+      "pages": [
+        "api-reference/endpoints/prompts/get-all-prompts",
+        "api-reference/endpoints/prompts/get-single-prompt",
+        "api-reference/endpoints/prompts/create-prompt",
+        "api-reference/endpoints/prompts/update-prompt",
+        "api-reference/endpoints/prompts/partial-update-prompt",
+        "api-reference/endpoints/prompts/delete-prompt"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "x": "https://x.com/nineteen58",
+    "github": "https://github.com/nineteen58",
+    "linkedin": "https://linkedin.com/company/nineteen58"
+  }
+}
