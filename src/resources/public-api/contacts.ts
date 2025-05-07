@@ -10,6 +10,16 @@ export class Contacts extends APIResource {
   /**
    * Creates a new contact with the provided information. Special validation is
    * applied for WhatsApp contacts.
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.publicAPI.contacts.createContact({
+   *     channel: 'whatsapp',
+   *     identifier: '1234567890',
+   *     name: 'John Doe',
+   *   });
+   * ```
    */
   createContact(
     body: ContactCreateContactParams,
@@ -20,6 +30,12 @@ export class Contacts extends APIResource {
 
   /**
    * Deletes an existing contact
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.publicAPI.contacts.deleteContact('id');
+   * ```
    */
   deleteContact(id: string, options?: RequestOptions): APIPromise<ContactDeleteContactResponse> {
     return this._client.delete(path`/public-api/contacts/${id}`, options);
@@ -27,6 +43,12 @@ export class Contacts extends APIResource {
 
   /**
    * Processes various types of input data to enrich contact information
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.publicAPI.contacts.enrichContact('id');
+   * ```
    */
   enrichContact(
     id: string,
@@ -41,6 +63,12 @@ export class Contacts extends APIResource {
 
   /**
    * Returns a paginated list of contacts with optional filtering capabilities
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.publicAPI.contacts.listContacts();
+   * ```
    */
   listContacts(
     query: ContactListContactsParams | null | undefined = {},
@@ -51,6 +79,14 @@ export class Contacts extends APIResource {
 
   /**
    * Updates specific fields of an existing contact
+   *
+   * @example
+   * ```ts
+   * const contact =
+   *   await client.publicAPI.contacts.partialUpdateContact(
+   *     'id',
+   *   );
+   * ```
    */
   partialUpdateContact(
     id: string,
@@ -62,6 +98,12 @@ export class Contacts extends APIResource {
 
   /**
    * Retrieves a single contact by its ID
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.publicAPI.contacts.retrieveContact('id');
+   * ```
    */
   retrieveContact(id: string, options?: RequestOptions): APIPromise<ContactRetrieveContactResponse> {
     return this._client.get(path`/public-api/contacts/${id}`, options);
@@ -69,6 +111,16 @@ export class Contacts extends APIResource {
 
   /**
    * Updates all fields of an existing contact
+   *
+   * @example
+   * ```ts
+   * const contact =
+   *   await client.publicAPI.contacts.updateContact('id', {
+   *     channel: 'channel',
+   *     identifier: 'identifier',
+   *     name: 'name',
+   *   });
+   * ```
    */
   updateContact(id: string, body: ContactUpdateContactParams, options?: RequestOptions): APIPromise<Contact> {
     return this._client.put(path`/public-api/contacts/${id}`, { body, ...options });
