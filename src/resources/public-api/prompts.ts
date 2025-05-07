@@ -9,6 +9,15 @@ import { path } from '../../internal/utils/path';
 export class Prompts extends APIResource {
   /**
    * Creates a new broadcast prompt with the provided details
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.publicAPI.prompts.createPrompt({
+   *     name: 'name',
+   *     prompt: 'prompt',
+   *   });
+   * ```
    */
   createPrompt(
     body: PromptCreatePromptParams,
@@ -19,6 +28,13 @@ export class Prompts extends APIResource {
 
   /**
    * Delete a prompt
+   *
+   * @example
+   * ```ts
+   * await client.publicAPI.prompts.deletePrompt(
+   *   '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+   * );
+   * ```
    */
   deletePrompt(promptID: string, options?: RequestOptions): APIPromise<void> {
     return this._client.delete(path`/public-api/prompts/${promptID}`, {
@@ -29,6 +45,12 @@ export class Prompts extends APIResource {
 
   /**
    * Returns a paginated list of broadcast prompts
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.publicAPI.prompts.listPrompts();
+   * ```
    */
   listPrompts(
     query: PromptListPromptsParams | null | undefined = {},
@@ -39,6 +61,13 @@ export class Prompts extends APIResource {
 
   /**
    * Partially update a prompt
+   *
+   * @example
+   * ```ts
+   * await client.publicAPI.prompts.partialUpdatePrompt(
+   *   '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+   * );
+   * ```
    */
   partialUpdatePrompt(
     promptID: string,
@@ -54,6 +83,14 @@ export class Prompts extends APIResource {
 
   /**
    * Get a prompt by ID
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.publicAPI.prompts.retrievePrompt(
+   *     '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+   *   );
+   * ```
    */
   retrievePrompt(promptID: string, options?: RequestOptions): APIPromise<PromptRetrievePromptResponse> {
     return this._client.get(path`/public-api/prompts/${promptID}`, options);
@@ -61,6 +98,14 @@ export class Prompts extends APIResource {
 
   /**
    * Update a prompt (full update)
+   *
+   * @example
+   * ```ts
+   * await client.publicAPI.prompts.updatePrompt(
+   *   '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+   *   { name: 'name', prompt: 'prompt' },
+   * );
+   * ```
    */
   updatePrompt(promptID: string, body: PromptUpdatePromptParams, options?: RequestOptions): APIPromise<void> {
     return this._client.put(path`/public-api/prompts/${promptID}`, {

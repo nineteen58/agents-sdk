@@ -8,6 +8,17 @@ import { path } from '../../internal/utils/path';
 export class Broadcasts extends APIResource {
   /**
    * Creates a new broadcast campaign
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.publicAPI.broadcasts.createBroadcast({
+   *     agent_id: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+   *     channel: 'phone',
+   *     contact_ids: ['182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e'],
+   *     prompt_id: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+   *   });
+   * ```
    */
   createBroadcast(
     body: BroadcastCreateBroadcastParams,
@@ -18,6 +29,12 @@ export class Broadcasts extends APIResource {
 
   /**
    * Returns a paginated list of broadcasts
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.publicAPI.broadcasts.listBroadcasts();
+   * ```
    */
   listBroadcasts(
     query: BroadcastListBroadcastsParams | null | undefined = {},
@@ -28,6 +45,14 @@ export class Broadcasts extends APIResource {
 
   /**
    * Returns details of a specific broadcast and its associated messages
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.publicAPI.broadcasts.retrieveBroadcast(
+   *     '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+   *   );
+   * ```
    */
   retrieveBroadcast(id: string, options?: RequestOptions): APIPromise<BroadcastRetrieveBroadcastResponse> {
     return this._client.get(path`/public-api/broadcasts/${id}`, options);

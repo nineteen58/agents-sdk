@@ -47,6 +47,11 @@ export class PublicAPI extends APIResource {
 
   /**
    * Returns a paginated list of agents with their associated channels
+   *
+   * @example
+   * ```ts
+   * const response = await client.publicAPI.listAgents();
+   * ```
    */
   listAgents(
     query: PublicAPIListAgentsParams | null | undefined = {},
@@ -57,6 +62,11 @@ export class PublicAPI extends APIResource {
 
   /**
    * Returns a paginated list of conversations with optional filtering capabilities
+   *
+   * @example
+   * ```ts
+   * const response = await client.publicAPI.listConversations();
+   * ```
    */
   listConversations(
     query: PublicAPIListConversationsParams | null | undefined = {},
@@ -68,6 +78,24 @@ export class PublicAPI extends APIResource {
   /**
    * Initiates voice calls to specified contacts using the provided broadcast
    * configurations
+   *
+   * @example
+   * ```ts
+   * const response = await client.publicAPI.triggerPhonecalls({
+   *   broadcasts: [
+   *     {
+   *       agent: 'agent',
+   *       assistantId: 'assistantId',
+   *       contact: 'contact',
+   *       firstSentence: 'firstSentence',
+   *       name: 'name',
+   *       objective: 'objective',
+   *       phoneNumberId: 'phoneNumberId',
+   *     },
+   *   ],
+   *   orgId: 'orgId',
+   * });
+   * ```
    */
   triggerPhonecalls(
     body: PublicAPITriggerPhonecallsParams,
