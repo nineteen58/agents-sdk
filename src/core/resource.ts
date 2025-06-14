@@ -2,7 +2,7 @@
 
 import type { Nineteen58Agents } from '../client';
 
-export class APIResource {
+export abstract class APIResource {
   protected _client: Nineteen58Agents;
 
   constructor(client: Nineteen58Agents) {
