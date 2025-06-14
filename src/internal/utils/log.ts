@@ -58,7 +58,7 @@ const noopLogger = {
   debug: noop,
 };
 
-let cachedLoggers = new WeakMap<Logger, [LogLevel, Logger]>();
+let cachedLoggers = /** @__PURE__ */ new WeakMap<Logger, [LogLevel, Logger]>();
 
 export function loggerFor(client: Nineteen58Agents): Logger {
   const logger = client.logger;
