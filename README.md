@@ -1,6 +1,6 @@
 # Nineteen58 Agents TypeScript API Library
 
-[![NPM version](https://img.shields.io/npm/v/nineteen58-agents.svg)](https://npmjs.org/package/nineteen58-agents) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/nineteen58-agents)
+[![NPM version](<https://img.shields.io/npm/v/nineteen58-agents.svg?label=npm%20(stable)>)](https://npmjs.org/package/nineteen58-agents) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/nineteen58-agents)
 
 This library provides convenient access to the Nineteen58 Agents REST API from server-side TypeScript or JavaScript.
 
